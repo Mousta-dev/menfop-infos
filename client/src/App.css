@@ -1,0 +1,126 @@
+body, #root, .App {
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #f8f9fa; /* Light background for natural theme */
+  color: #212529; /* Dark text for readability on light background */
+  position: relative;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Adjust Navbar for Liquid Glass effect */
+.navbar {
+  background-color: rgba(255, 255, 255, 0.7) !important; /* Semi-transparent white background */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Subtle bottom border */
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Subtle shadow */
+  color: #212529 !important; /* Dark text for readability */
+  position: sticky; /* Keep navbar sticky at top */
+  top: 0;
+  z-index: 1000; /* Ensure it stays above other content */
+}
+
+/* Ensure navbar links are dark and readable */
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: #212529 !important;
+}
+.navbar .nav-link:hover,
+.navbar .navbar-brand:hover {
+  color: #0056b3 !important; /* Darker blue on hover */
+}
+
+/* Adjust navbar toggler icon color for visibility */
+.navbar-toggler-icon {
+  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(170deg) brightness(0.8); /* Darker icon color */
+}
+
+
+/* Ensure content containers have a solid light background */
+.container.mt-3 {
+  background-color: #ffffff; /* White background for main content area */
+  padding: 20px;
+  border-radius: 8px;
+  min-height: calc(100vh - 56px - 2rem); /* Adjust based on navbar height and margin */
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Subtle shadow */
+}
+
+/* Make cards a solid light background */
+.card {
+  background-color: #ffffff !important; /* Solid white background for cards */
+  border-color: #ced4da !important; /* Subtle light gray border */
+}
+
+/* Text color adjustments for various elements */
+h1, h2, h3, h4, h5, h6, .card-title, .form-label {
+  color: #212529; /* Dark text */
+}
+
+/* Make tables light theme friendly */
+.table {
+  background-color: #ffffff; /* Solid white background for tables */
+  color: #212529; /* Dark text for tables */
+}
+
+.table th,
+.table td {
+  background-color: #ffffff !important; /* Ensure table cells are white */
+  border-color: #dee2e6 !important; /* Lighter border for contrast */
+}
+
+.table thead th {
+  color: #212529; /* Ensure table headers are dark */
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: #f2f2f2 !important; /* Slightly different light background for odd rows */
+}
+
+.table-hover > tbody > tr:hover > * {
+  background-color: #e2e6ea !important; /* Lighter hover effect */
+}
+
+/* Make Modal backgrounds solid light */
+.modal-content {
+  background-color: #ffffff !important; /* Solid white background for modal content */
+  color: #212529; /* Dark text */
+  border-color: #ced4da !important;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+  background-color: #ffffff !important; /* Ensure modal internal parts are light */
+  border-color: #ced4da !important; /* Subtle border */
+}
+
+/* Make form controls solid light */
+.form-control,
+.form-select {
+  background-color: #ffffff !important; /* White background for input fields */
+  color: #212529 !important; /* Dark text for input */
+  border-color: #ced4da !important; /* Light gray border */
+}
+
+.form-control::placeholder { /* Adjust placeholder color */
+  color: #6c757d !important; /* Muted dark gray placeholder */
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #ffffff !important; /* White on focus */
+  border-color: #80bdff !important; /* Bootstrap blue focus border */
+  box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25) !important; /* Bootstrap blue glow on focus */
+}

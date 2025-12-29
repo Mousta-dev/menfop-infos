@@ -1,0 +1,71 @@
+import React, { useState, useEffect } from 'react';
+import { Card, Alert, Button } from 'react-bootstrap';
+import api from '../api';
+import { useParams } from 'react-router-dom';
+
+const ReportView = () => {
+  const { id } = useParams();
+  const [report, setReport] = useState(null);
+  const [error, setError] = useState('');
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    fetchReport();
+  }, [id]);
+
+  const fetchReport = async () => {
+    try {
+      const response = await api.get(`/reports/${id}`);
+      setReport(response.data.data);
+    } catch (err) {
+      console.error('Error fetching report:', err);
+      setError('Failed to fetch report.');
+      setReport(null);
+    }
+  };
+
+  const handleCopyShareUrl = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000); // Reset copied state after 2 seconds
+  };
+
+  if (error) {
+    return <Alert variant="danger">{error}</Alert>;
+  }
+
+  if (!report) {
+    return <Alert variant="info">Chargement du rapport...</Alert>;
+  }
+
+  return (
+    <div>
+      <h1>Rapport #{report.id}</h1>
+      <Card className="mb-3">
+        <Card.Body>
+          <Card.Title>Contenu du Rapport</Card.Title>
+          <p className="border p-3 rounded" style={{ whiteSpace: 'pre-wrap', backgroundColor: 'rgba(255,255,255,0.05)' }}>
+            {report.content}
+          </p>
+          <Card.Text>
+            <small className="text-muted">Créé le: {new Date(report.created_at).toLocaleString()}</small>
+          </Card.Text>
+        </Card.Body>
+      </Card>
+
+      <Card>
+        <Card.Body>
+          <Card.Title>Partager ce Rapport</Card.Title>
+          <Alert variant="secondary">
+            {window.location.href}
+          </Alert>
+          <Button variant="outline-info" onClick={handleCopyShareUrl}>
+            {copied ? 'Copié!' : 'Copier le lien de partage'}
+          </Button>
+        </Card.Body>
+      </Card>
+    </div>
+  );
+};
+
+export default ReportView;
